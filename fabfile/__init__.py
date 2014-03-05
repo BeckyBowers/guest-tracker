@@ -601,6 +601,18 @@ def shiva_the_destroyer():
             if app_config.DEPLOY_SERVICES:
                 nuke_confs()
 
+@task
+def update_data():
+    doc = {
+        "key": "0Ag6LtLEJqtdcdEVhT1dUbUdCWDBfcnhfc3FwanZ0OWc",
+        "gid": "1",
+        "file_format": "csv",
+        "file_name": "guest-tracker"
+    }
+    g = GoogleDoc(**doc)
+    g.get_auth()
+    g.get_document()
+
 """
 App-template specific setup. Not relevant after the project is running.
 """

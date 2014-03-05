@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import csv
 from flask import Flask, render_template
 
 import app_config
@@ -11,13 +12,48 @@ app = Flask(app_config.PROJECT_NAME)
 
 app.jinja_env.filters['urlencode'] = urlencode_filter
 
-# Example application views
 @app.route('/')
-def index():
+def tracker():
     """
-    Example view demonstrating rendering a simple HTML page.
+    {
+        "John Boehner": [
+            {
+                "Date": "1/9/2014",
+                "Show": "Meet the Press
+            },
+            {
+                "Date": "1/20/2014",
+                "Show": "Fox and Friends"
+            }
+        ],
+        "Nancy Pelosi": [
+            {
+                "Date": "1/9/2014",
+                "Show": "Meet the Press
+            },
+            {
+                "Date": "1/20/2014",
+                "Show": "Fox and Friends"
+            }
+        ]
+    }
     """
-    return render_template('index.html', **make_context())
+    context = make_context()
+    context['guests'] = {}
+
+    with open('data/guest-tracker.csv', 'rb') as readfile:
+        csvreader = csv.DictReader(readfile)
+
+        for row in csvreader:
+            if row['Person'] != '':
+
+                if not context['guests'].get(row['Person'], None):
+                    context['guests'][row['Person']] = []
+
+                context['guests'][row['Person']].append(row)
+
+
+    return render_template('index.html', **context)
 
 @app.route('/widget.html')
 def widget():
@@ -36,7 +72,7 @@ def test_widget():
 @app.route('/test/test.html')
 def test_dir():
     return render_template('index.html', **make_context())
-    
+
 app.register_blueprint(static.static)
 
 # Boilerplate
