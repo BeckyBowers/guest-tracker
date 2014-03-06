@@ -95,7 +95,7 @@ Project secrets should **never** be stored in ``app_config.py`` or anywhere else
 Save media assets
 -----------------
 
-Large media assets (images, videos, audio) are synced with an Amazon S3 bucket called ```assets.apps.npr.org``` in a folder with the name of the project. This allows everyone who works on the project to access these assets without storing them in the repo, giving us faster clone times and the ability to open source our work.
+Large media assets (images, videos, audio) are synced with an Amazon S3 bucket called ```assets.apps.npr.org``` in a folder with the name of the project. This allows everyone who works on NPR's projects to access these assets without storing them in the repo, giving them faster clone times and the ability to open source their work.
 
 Syncing these assets requires running a couple different commands at the right times. When you create new assets or make changes to current assets that need to get uploaded to the server, run ```fab assets.sync```. This will do a few things:
 
@@ -155,7 +155,7 @@ fab update_copy
 
 Note: ``update_copy`` runs automatically whenever ``fab render`` is called.
 
-At the template level, Jinja maintains a ``COPY`` object that you can use to access your values in the templates. Using our example sheet, to use the ``byline`` key in ``templates/index.html``:
+At the template level, Jinja maintains a ``COPY`` object that you can use to access your values in the templates. Using NPR's example sheet, to use the ``byline`` key in ``templates/index.html``:
 
 ```
 {{ COPY.attribution.byline }}
@@ -178,7 +178,7 @@ You may also access rows using iterators. In this case, the column headers of th
 
 Arbitrary Google Docs
 ----------------------
-Sometimes, our projects need to read data from a Google Doc that's not involved with the COPY rig. In this case, we've got a class for you to download and parse an arbitrary Google Doc to a CSV.
+Sometimes, NPR's projects need to read data from a Google Doc that's not involved with the COPY rig. In this case, they've got a class for you to download and parse an arbitrary Google Doc to a CSV.
 
 This solution will download the uncached version of the document, unlike those methods which use the "publish to the Web" functionality baked into Google Docs. Published versions can take up to 15 minutes up update!
 
@@ -270,9 +270,9 @@ fab staging master deploy
 Deploy to EC2
 -------------
 
-You can deploy to EC2 for a variety of reasons. We cover two cases: Running a dynamic web application (`public_app.py`) and executing cron jobs (`crontab`).
+You can deploy to EC2 for a variety of reasons. NPR's app template covers two cases: Running a dynamic web application (`public_app.py`) and executing cron jobs (`crontab`).
 
-Servers capable of running the app can be setup using our [servers](https://github.com/nprapps/servers) project.
+Servers capable of running the app can be setup using NPR's [servers](https://github.com/nprapps/servers) project.
 
 For running a Web application:
 
