@@ -28,7 +28,7 @@ guest-tracker
 What is this?
 -------------
 
-**Describe guest-tracker here.**
+This app tracks guests.
 
 Assumptions
 -----------
