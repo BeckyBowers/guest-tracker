@@ -1,6 +1,6 @@
-Copyright 2013 NPR.  All rights reserved.  No part of these materials may be reproduced, modified, stored in a retrieval system, or retransmitted, in any form or by any means, electronic, mechanical or otherwise, without prior written permission from NPR.
+Adapted from the [NPR visuals team's app-template](https://github.com/nprapps/app-template/)
 
-(Want to use this code? Send an email to nprapps@npr.org!)
+Copyright 2014 Tampa Bay Times
 
 guest-tracker
 ========================
